@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Extensions — QA Compass</title>
+<meta name="description" content="Chrome extensions built by Vishal Maheta for QA and development workflows." />
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="extensions.html" class="active">Extensions</a>
+      <a href="blog/index.html">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Chrome extensions</span>
+    <h1>Tools I built to solve my own testing problems.</h1>
+    <p class="lede">Each one started as something I needed on a real project. I keep them updated here as new versions ship.</p>
+  </div>
+</header>
+
+<section class="page-section" id="standard-data-generator">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Standard Data Generator</h2>
+      <span class="ext-version">v1.4</span>
+    </div>
+    <p class="lede" style="margin-bottom:1.4rem;">
+      Fills the gap between "I need a fake VAT number for Belgium" and actually finding one. Click the extension on any page, scan its fields, and generate correctly formatted test data — tax/VAT numbers, national IDs, IBAN, postal codes, passport numbers, bank accounts, mobile numbers, email, names, age, and date of birth — across 36 countries.
+    </p>
+    <p class="lede" style="margin-bottom:1.4rem;">
+      For VAT numbers, national IDs, and IBAN, it doesn't just format digits — it implements the real public check-digit algorithms (the same ones used by Belgium, the Netherlands, France, Spain, all EU countries, Australia, Brazil, and India's Aadhaar via the Verhoeff algorithm), so generated values pass the same validation a real one would. Where no public checksum exists, values are clearly labeled format-only.
+    </p>
+    <div class="ext-tags" style="margin-bottom:1.6rem;">
+      <span class="tag">36 countries</span>
+      <span class="tag">Checksum-verified IDs</span>
+      <span class="tag">Zero network calls</span>
+    </div>
+    <h2 style="font-size:1.15rem; margin-bottom: 0.8rem;">Version history</h2>
+    <ul class="version-list">
+      <li class="version-row"><span class="version-num">v1.4</span><span class="version-note">Rebuilt page-scan flow: one dropdown of detected fields + single Generate button producing 3 sample records each. Added Age and Date of Birth fields.</span></li>
+      <li class="version-row"><span class="version-num">v1.3</span><span class="version-note">Added Aadhaar (India), extra checksummed national IDs (Poland, Sweden, Norway, Czech Republic, Finland), and format-only postal codes, passport numbers, and bank account fields for all 36 countries.</span></li>
+      <li class="version-row"><span class="version-num">v1.2</span><span class="version-note">Added real, checksum-verified IBAN generation for all 30 European countries.</span></li>
+      <li class="version-row"><span class="version-num">v1.1</span><span class="version-note">Expanded from 4 countries to 36 — full EU, UK, Switzerland, Norway, Australia, Brazil, US, Canada, India, Japan.</span></li>
+      <li class="version-row"><span class="version-num">v1.0</span><span class="version-note">Initial release: Belgium, Netherlands, France, Germany VAT and national ID generation.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-section" id="broken-link-checker">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Broken Link Checker</h2>
+      <span class="ext-version">v1.0</span>
+    </div>
+    <p class="lede" style="margin-bottom:1.4rem;">
+      Checks every link on the page you're currently viewing and reports which ones are broken. Click the extension, hit Scan, and it collects every link on the page, checks each one's HTTP status, and shows a report of what's working and what's not — no more manually clicking through every link on a page during a QA pass.
+    </p>
+    <div class="ext-tags" style="margin-bottom:1.6rem;">
+      <span class="tag">Link testing</span>
+      <span class="tag">Manifest V3</span>
+    </div>
+    <h2 style="font-size:1.15rem; margin-bottom: 0.8rem;">Version history</h2>
+    <ul class="version-list">
+      <li class="version-row"><span class="version-num">v1.0</span><span class="version-note">Initial release: scan the active page, check every link's status, view the full report in a separate tab.</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
