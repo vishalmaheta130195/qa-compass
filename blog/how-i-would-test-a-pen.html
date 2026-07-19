@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How I'd Test a Pen: A Test-Scenario Writing Exercise — QA Compass</title>
+<meta name="description" content="A classic QA training exercise — writing test scenarios for a plain physical object — and what it actually teaches about testing software." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">19 July 2026 · Testing practice</div>
+  <h1>How I'd Test a Pen: A Test-Scenario Writing Exercise</h1>
+
+  <p>One of the oldest exercises in QA training is also one of the best: forget the app for a minute, and write test scenarios for something completely ordinary — a pen. No login screen, no API, no edge cases involving Unicode. Just a plain ballpoint pen. It sounds almost too simple to matter, but it's a surprisingly good way to practice the actual skill of testing: noticing everything a "simple" thing has to get right.</p>
+
+  <p>Here's how I'd break it down.</p>
+
+  <h2>Start with what the product is actually for</h2>
+  <p>A pen's core job is trivial to state and easy to under-test: it has to write, reliably, for as long as it's expected to last. Everything else — the cap, the grip, the ink — exists to support that one job. So the first scenarios are always the obvious ones:</p>
+  <ul>
+    <li>Does it write immediately, without skipping, on the first stroke?</li>
+    <li>Does the ink flow consistently across a full page, not just the first few lines?</li>
+    <li>Does the line width stay consistent, or does it thicken and thin unpredictably?</li>
+  </ul>
+
+  <h2>Then test the conditions it's expected to survive</h2>
+  <p>This is where the exercise gets interesting, because it forces you to think about environment and durability — the same category of thinking you'd apply to a mobile app that needs to survive a bad network or a low-battery state:</p>
+  <ul>
+    <li>Does it still write after being dropped?</li>
+    <li>Does it survive being carried in a pocket or bag all day without leaking?</li>
+    <li>Does the ink hold up on different paper types — a notebook page, an exam answer sheet, glossy paper?</li>
+    <li>Does performance change in heat, or after long periods unused?</li>
+  </ul>
+
+  <h2>Don't skip usability</h2>
+  <p>A pen that writes perfectly but is miserable to hold still fails its user. This maps directly to UX testing on real products — functional correctness isn't the whole story:</p>
+  <ul>
+    <li>Is the grip comfortable for extended writing?</li>
+    <li>Is the cap easy to remove and post back on one-handed?</li>
+    <li>Is the length and balance reasonable for different hand sizes?</li>
+  </ul>
+
+  <div class="callout">
+    Notice the pattern: functional scenarios, durability/environmental scenarios, and usability scenarios. That's the same three-part lens I reach for on any feature I test — does it work, does it hold up under real conditions, and is it pleasant to actually use.
+  </div>
+
+  <h2>Why this exercise actually works</h2>
+  <p>The value isn't in testing pens for a living — it's that a physical object has no hidden implementation to lean on. You can't "check the code" to see what should happen; you have to reason about intent, environment, and the user entirely from observation. That's precisely the muscle real testing requires, especially with a feature you've never seen before and no spec to fall back on.</p>
+
+  <p>Next time you're stuck writing test cases for something and the scenarios feel thin, try the pen exercise on paper first. It's a fast way to remind yourself what "thorough" actually looks like before you go back to the feature that's paying your salary.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>

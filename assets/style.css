@@ -260,6 +260,56 @@ h2 {
 }
 .version-note { color: var(--ink-soft); }
 
+/* ---- Article body ---- */
+article.post-body {
+  padding: 3rem 0 4rem;
+}
+article.post-body .post-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.6rem;
+}
+article.post-body h1 { margin-bottom: 1.6rem; }
+article.post-body p, article.post-body li {
+  max-width: 68ch;
+  font-size: 1rem;
+}
+article.post-body p { margin: 0 0 1.15rem; }
+article.post-body h2 {
+  font-size: 1.35rem;
+  margin: 2.4rem 0 1rem;
+}
+article.post-body h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.7rem;
+}
+article.post-body ul, article.post-body ol {
+  margin: 0 0 1.3rem;
+  padding-left: 1.4rem;
+}
+article.post-body li { margin-bottom: 0.5rem; }
+article.post-body .callout {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1.6rem 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.back-link {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 /* ---- Footer ---- */
 footer.site-footer {
   padding: 2.2rem 0 3rem;
