@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SDLC From a QA Seat, Not a Textbook — QA Compass</title>
+<meta name="description" content="What the Software Development Life Cycle actually looks like from a QA perspective, and where testing really earns its place in each phase." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">21 July 2026 · Testing practice</div>
+  <h1>SDLC From a QA Seat, Not a Textbook</h1>
+
+  <p>The Software Development Life Cycle gets taught as six or seven clean phases in a row. In real projects, they overlap constantly, and QA's actual involvement in each one looks very different from what the diagram suggests. Here's what each phase means once you're the person responsible for catching what slips through it.</p>
+
+  <h2>Requirement Analysis: where most bugs are actually born</h2>
+  <p>Requirements that are vague, contradictory, or simply incomplete cause far more defects than sloppy code does. If "the search should be fast" makes it into a requirements document without a number attached, that ambiguity turns into a dispute later — usually during testing, when it's most expensive to resolve. Reading requirements with a tester's eye, and flagging the vague ones before development starts, is some of the highest-leverage work QA can do, even though it happens before a single test case exists.</p>
+
+  <h2>Design: the last cheap chance to ask "how would we test this?"</h2>
+  <p>Once architecture decisions are locked in, testability is largely fixed too. A system with no logging, no way to inspect intermediate state, or no test environment that mirrors production will be painful to test no matter how skilled the QA team is. Getting a seat at design discussions — even just to ask what's observable and what isn't — pays off far more than any amount of test-case writing later.</p>
+
+  <h2>Implementation: QA's quiet phase, if you use it well</h2>
+  <p>While developers are building, this is when test plans, test data, and test scenarios actually get written — not after a build lands. Teams that wait until code is "done" to start thinking about testing are always testing under time pressure. Teams that use the implementation phase to prepare are testing on schedule.</p>
+
+  <h2>Testing: not one phase, several kinds happening in sequence</h2>
+  <p>This is usually where SDLC diagrams get lazy and just say "Testing" as a single box. In practice it's functional testing, regression testing, integration testing, and often performance and security testing layered on top of each other, each catching different classes of problems. Treating "Testing" as one undifferentiated phase is how teams end up thinking they're done after a single pass.</p>
+
+  <h2>Deployment: the environment is part of the product</h2>
+  <p>Code that passed every test in staging can still fail in production because of a configuration difference, a missing environment variable, or a permission that exists in one environment and not the other. Smoke-testing immediately after deployment — not just trusting that "it worked in staging" — is the difference between catching an environment-specific bug in minutes versus finding out from a user report.</p>
+
+  <h2>Maintenance: where regression testing either saves you or doesn't</h2>
+  <p>Every fix, patch, and small feature added after release risks breaking something that used to work. This is the phase where a solid regression suite pays for itself many times over — and where teams without one slowly accumulate quiet, unnoticed breakage until something visible finally fails.</p>
+
+  <div class="callout">
+    The phases aren't really sequential in practice — they loop, overlap, and repeat every sprint or release cycle. What stays constant is that QA's job changes shape in each one: reading requirements critically, questioning design for testability, preparing early, testing in layers, verifying environments, and guarding against regression. It's less "the testing phase" and more "a different kind of attention in every phase."
+  </div>
+
+  <p>If your team only associates QA with the "Testing" box on the diagram, that's usually a sign testing is starting later than it should — and picking up problems that were cheaper to catch two phases earlier.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
