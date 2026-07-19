@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STLC: The Life Cycle Inside the Life Cycle — QA Compass</title>
+<meta name="description" content="The Software Testing Life Cycle explained from practice — what each phase actually involves and where teams tend to shortcut it." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">22 July 2026 · Testing practice</div>
+  <h1>STLC: The Life Cycle Inside the Life Cycle</h1>
+
+  <p>SDLC describes how a product gets built. STLC — the Software Testing Life Cycle — is the parallel process describing how it gets properly tested, and it runs alongside SDLC rather than waiting politely for it to finish. Treating STLC as something that only starts once "the Testing phase" of SDLC begins is the single most common reason testing ends up rushed.</p>
+
+  <h2>Requirement Analysis: testing starts before there's anything to test</h2>
+  <p>This phase isn't about running tests — it's about reading requirements closely enough to know what "testable" even means for this feature. What's measurable? What's ambiguous? What has no defined behavior for edge cases yet? Questions raised here are far cheaper to answer than the same questions raised during test execution, when a deadline is already in motion.</p>
+
+  <h2>Test Planning: deciding scope before deciding scenarios</h2>
+  <p>This is where you decide what "done" testing looks like: which types of testing apply (functional, regression, performance, security), what the entry and exit criteria are, what's explicitly out of scope, and roughly how much time each area deserves. Skipping this and jumping straight to writing test cases usually means scope gets decided reactively, one ad-hoc decision at a time, instead of deliberately.</p>
+
+  <h2>Test Case Development: where "thorough" gets defined in practice</h2>
+  <p>Test scenarios come first — the broad "what needs to be verified" list — followed by detailed test cases with concrete steps, data, and expected results. The trap here is writing cases that only cover the happy path because it's the fastest to write. The value of this phase is almost entirely in the negative and edge cases: what happens with invalid input, empty states, permission boundaries, and unlikely-but-possible sequences of actions.</p>
+
+  <h2>Test Environment Setup: the phase everyone underestimates</h2>
+  <p>An environment that doesn't match production closely enough — different data volume, different configuration, missing integrations — can make an entire test cycle worthless without anyone realizing it until a bug shows up after release that "should have been caught." Verifying the test environment itself, before trusting any results from it, is not optional busywork; it's what makes every other phase mean something.</p>
+
+  <h2>Test Execution: the visible part, but not the whole job</h2>
+  <p>Running the test cases and logging results is what testing looks like from the outside, but execution quality depends entirely on how well the earlier phases were done. A well-planned cycle with clear cases and a solid environment turns execution into a fairly mechanical, trustworthy process. A rushed setup turns execution into constant firefighting and re-verification.</p>
+
+  <h2>Test Cycle Closure: the phase most teams skip entirely</h2>
+  <p>Before moving on to the next cycle, it's worth actually asking: what escaped detection, why, and what would have caught it? Which test cases found real bugs, and which never once failed and might not be worth maintaining? Closure is where a testing process actually improves over time — skip it, and every cycle repeats the same blind spots as the last one.</p>
+
+  <div class="callout">
+    The phases map loosely onto SDLC's, but they're not the same clock — STLC's Requirement Analysis can (and should) start the moment SDLC's Requirement Analysis produces a document, not after Design and Implementation are finished. Running them in parallel is the whole point; running them in sequence is how testing becomes the bottleneck everyone blames at the end.
+  </div>
+
+  <p>If a project's testing consistently feels compressed at the end, the fix is rarely "test faster." It's usually that STLC only started once SDLC reached the Testing phase — three phases later than it should have.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
