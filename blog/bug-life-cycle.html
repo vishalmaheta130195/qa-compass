@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Bug Life Cycle, and Why Half of QA Is Managing It — QA Compass</title>
+<meta name="description" content="A practical walkthrough of the bug life cycle — the stages a defect actually goes through, and where things really go wrong in practice." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">20 July 2026 · Testing practice</div>
+  <h1>The Bug Life Cycle, and Why Half of QA Is Managing It</h1>
+
+  <p>Everyone learns the bug life cycle as a diagram early on: a bug is born, moves through a few boxes, and dies "Closed." In theory that's true. In practice, most of the actual skill in QA lives in the messy parts between those boxes — and that's the part training diagrams never quite capture.</p>
+
+  <h2>The stages, briefly</h2>
+  <p>Names vary slightly by team and tool, but the core flow is consistent:</p>
+  <ul>
+    <li><strong>New</strong> — you've found something wrong and logged it.</li>
+    <li><strong>Assigned</strong> — a developer (or lead) is now responsible for it.</li>
+    <li><strong>Open / In Progress</strong> — someone is actively working on a fix.</li>
+    <li><strong>Fixed</strong> — the dev believes it's resolved and hands it back.</li>
+    <li><strong>Retest</strong> — QA verifies the fix against the original steps.</li>
+    <li><strong>Verified / Closed</strong> — confirmed fixed, cycle ends.</li>
+    <li><strong>Reopened</strong> — the fix didn't hold, and the cycle starts again from Open.</li>
+  </ul>
+  <p>There are also the exits nobody puts on the pretty diagram: <strong>Duplicate</strong>, <strong>Not a Bug</strong>, <strong>Deferred</strong> (real, but not fixed this cycle), and <strong>Won't Fix</strong>. Knowing when to route a bug into one of these instead of forcing it through the "real" cycle is its own skill.</p>
+
+  <h2>Where it actually gets hard</h2>
+
+  <h3>Writing the report so "Retest" isn't guesswork</h3>
+  <p>A bug that gets marked Fixed and then immediately Reopened is usually a report problem, not a dev problem. If your original steps, environment, and expected-vs-actual aren't precise, the developer fixes what they think they saw — and retest becomes an argument instead of a checklist. The fix for this isn't a better tool, it's writing the report as if someone with zero context has to reproduce it cold.</p>
+
+  <h3>The "Fixed" state is a claim, not a fact</h3>
+  <p>Treat every "Fixed" status as unverified until you've personally retested it against the exact original steps — not a quick sanity check, the original steps. I've seen fixes that solved a symptom on one environment while leaving the actual root cause (and two other affected screens) completely untouched. Retest is where you catch that, and it's the stage most likely to get rushed when a release is close.</p>
+
+  <h3>Reopened bugs need a memory</h3>
+  <p>A bug that's been reopened twice is telling you something beyond "the fix didn't work" — usually that the root cause wasn't understood the first time, or that the fix is fighting the architecture. Track reopen counts, even informally. A high reopen rate on a specific module is one of the more reliable early signals that an area of the codebase needs more than a quick patch.</p>
+
+  <h3>Priority and severity drift over the cycle</h3>
+  <p>A bug's severity (how bad the impact is) shouldn't change once you understand it properly. But priority (how soon it gets fixed) legitimately shifts as a release date approaches, as duplicates pile up confirming impact, or as a workaround gets found. Re-evaluating priority at each stage — not just at intake — is part of managing the cycle, not a sign the original triage was wrong.</p>
+
+  <div class="callout">
+    The life cycle diagram describes the states. The actual job is making sure a bug doesn't quietly stall in one of them — sitting "Assigned" with no owner, or "Fixed" with no real retest — which is usually where bugs escape into production, not because the process had a hole, but because nobody was watching a specific box.
+  </div>
+
+  <p>If your team's bug tracker shows you cycle time per stage, look at it occasionally. A bug that lingers unusually long in "Retest" or "Reopened" is rarely about that one bug — it's usually pointing at a testing gap, a communication gap, or a piece of the system nobody fully understands yet.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
