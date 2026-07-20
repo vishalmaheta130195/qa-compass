@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exploratory Testing: Test Design and Execution at the Same Time — QA Compass</title>
+<meta name="description" content="What exploratory testing actually is, how it differs from scripted testing, and a simple session-based way to keep it from turning into aimless clicking." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">8 August 2026 · Testing practice</div>
+  <h1>Exploratory Testing: Test Design and Execution at the Same Time</h1>
+
+  <p>Scripted testing separates two activities: someone designs a test case in advance, and someone (possibly the same person, possibly not) executes it later. Exploratory testing collapses that separation on purpose — you're designing the next test based on what the last one just showed you, in real time, rather than following a list decided before you'd seen the product behave at all.</p>
+
+  <h2>Why unscripted isn't the same as unstructured</h2>
+  <p>"Exploratory" gets misread as "just click around and see what happens," which undersells what's actually going on. A good exploratory session still has a charter — a specific area or question to investigate — and a tester actively forming hypotheses: if this validation works this way, what happens at this adjacent boundary? If this state transition is possible, is the reverse one handled too? The structure is in the thinking, not in a pre-written script.</p>
+
+  <h2>What it catches that scripted testing doesn't</h2>
+  <p>Scripted test cases test what someone thought to write down in advance, which means they're only as good as that person's foresight. Exploratory testing catches the things nobody thought to script — an unusual sequence of actions, a combination of two features that were never tested together because no single test case covered both, a piece of behavior that only becomes obviously wrong once you're actually interacting with it rather than reading a spec. It's the closest thing to testing the way a real, curious, occasionally careless user actually behaves.</p>
+
+  <h2>Session-based exploratory testing: keeping it accountable</h2>
+  <p>The practical risk with exploratory testing is that it's hard to know afterward what was actually covered. Session-based exploratory testing fixes this with a simple structure: a fixed time box (often 60-90 minutes), a clear charter stating what's being investigated, and notes captured during the session — what was tried, what was found, what's still open. At the end, a short debrief turns "I poked around for an hour" into something reviewable: specific areas covered, specific bugs found, specific gaps still unexplored.</p>
+
+  <div class="callout">
+    A useful pairing: use scripted tests to guarantee known-important behavior is always checked, and exploratory sessions to cover everything a script wasn't written for. Relying on only one of them either misses the unscripted edge cases entirely, or loses the guarantee that critical paths get checked every single time regardless of who's testing that day.
+  </div>
+
+  <h2>Building the habit</h2>
+  <p>The instinct exploratory testing depends on — actively asking "what happens if I do this instead" rather than following the intended path — is the same one I described in the <a href="software-testing.html">software testing</a> post as the actual core skill underneath all the process vocabulary. If it doesn't come naturally yet, a fixed charter and a timer are usually enough structure to make a first session productive rather than just aimless.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
