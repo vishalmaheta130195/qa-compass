@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>STLC vs. SDLC: Two Life Cycles, Running at the Same Time — QA Compass</title>
+<meta name="description" content="How the Software Testing Life Cycle and the Software Development Life Cycle actually relate to each other, and the misconception that causes testing to always feel rushed." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">28 July 2026 · Testing practice</div>
+  <h1>STLC vs. SDLC: Two Life Cycles, Running at the Same Time</h1>
+
+  <p>I've written about <a href="sdlc.html">SDLC</a> and <a href="stlc.html">STLC</a> separately, but the question I actually get asked most is simpler: how do these two relate? The short answer is that SDLC describes how the whole product gets built, and STLC describes how it gets properly tested — and the most common mistake is treating STLC as a phase that sits inside SDLC, waiting its turn, rather than a parallel process running alongside it from day one.</p>
+
+  <h2>Different scope, similar shape</h2>
+  <p>SDLC covers the entire product: requirements, design, implementation, testing, deployment, maintenance. STLC covers only the testing discipline, but in enough depth that it has its own internal phases: requirement analysis, test planning, test case development, environment setup, execution, and closure. They share vocabulary — both talk about "requirement analysis," both have a phase people call "testing" — which is exactly why they get flattened into one mental model when they shouldn't be.</p>
+
+  <h2>The dependency runs one direction, not two</h2>
+  <p>STLC needs SDLC's outputs to function — you can't plan tests against requirements that don't exist yet, and you can't execute tests against a build that hasn't been implemented. But SDLC's later phases also depend on STLC's outputs: deployment decisions should depend on test results, not the other way around. The relationship isn't symmetric, and that's worth sitting with, because it explains why STLC so often gets treated as an afterthought — its inputs come from SDLC, so it's easy to assume its timeline should too.</p>
+
+  <h2>Where the timelines should actually overlap</h2>
+  <p>STLC's requirement analysis phase should start the moment SDLC produces a requirements document — not after SDLC's design or implementation phases finish. Test planning and test case development can run alongside SDLC's design and implementation phases, using that time to prepare rather than waiting idle. Only test execution genuinely has to wait for a working build. Everything before that point in STLC can and should be running in parallel with SDLC, not queued up behind it.</p>
+
+  <div class="callout">
+    A useful way to picture it: SDLC is the timeline of the product. STLC is a second timeline, tracking testing specifically, that starts almost as early as SDLC does and finishes around the same point — not a short block borrowed from the end of SDLC's schedule.
+  </div>
+
+  <h2>Why this distinction actually matters</h2>
+  <p>Projects where testing "always feels rushed" are usually projects where STLC was implicitly treated as a subset of SDLC's testing phase — starting late by design, not by accident. Once you see the two as separate, parallel life cycles with their own phases, the fix becomes obvious: start STLC's early phases the moment SDLC produces something to analyze, not the moment SDLC declares testing has officially begun.</p>
+
+  <p>For a deeper look at each one individually, the earlier posts on <a href="sdlc.html">SDLC</a> and <a href="stlc.html">STLC</a> go through their phases in more detail. This one is really about the relationship between them — which, once it clicks, tends to change how a team schedules a project far more than any individual phase description does.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
