@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Use Case Testing: Testing the Goal, Not Just the Feature — QA Compass</title>
+<meta name="description" content="How use case testing derives test cases from a user's actual goal and its alternate paths, not just a feature's individual functions." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">16 August 2026 · Testing practice</div>
+  <h1>Use Case Testing: Testing the Goal, Not Just the Feature</h1>
+
+  <p>Most test design techniques on this blog start from an input or a condition. Use case testing starts from something different: what is the user actually trying to accomplish, from start to finish, and what are all the ways that attempt can go. It tends to catch a different category of bug than function-by-function testing does, because it's testing a complete goal rather than an isolated piece of behavior.</p>
+
+  <h2>The anatomy of a use case</h2>
+  <p>A use case describes an actor (who's doing this), a goal (what they're trying to accomplish), preconditions (what has to be true before this can start), a main flow (the straightforward path from start to goal), alternate flows (other valid ways to reach the same goal), and exception flows (what happens when something goes wrong along the way). "Customer returns a purchased item" is a use case; "clicking the return button" is not — it's one step inside it.</p>
+
+  <h2>Deriving tests from the flows</h2>
+  <p>The main flow becomes the first, most obvious test case — the straightforward path a happy, cooperative user takes. But the actual coverage comes from the alternate and exception flows: what if the item is past the return window, what if it was purchased with a gift card instead of a card on file, what if the customer starts the return and abandons it halfway through. Each documented flow is effectively a test case waiting to be written, and a use case with no alternate flows listed is usually a sign the requirement wasn't thought through completely, not that the feature is genuinely that simple.</p>
+
+  <h2>How this differs from a scenario list</h2>
+  <p>I wrote earlier about <a href="test-scenario-vs-test-case.html">test scenarios vs. test cases</a> — a scenario list is a flat set of "things to verify" for a feature. A use case is structured around a single actor's single goal and its full set of paths to get there, which naturally surfaces sequencing and dependency issues a flat scenario list can miss: does starting the return process lock the order from being modified elsewhere, does an abandoned return leave the item's status in a strange in-between state. Testing the whole journey, not just its individual steps, is what this technique adds.</p>
+
+  <div class="callout">
+    A practical habit: whenever a use case document lists a main flow but no alternate or exception flows, treat that as an open question rather than a finished spec. Asking "what if the user does X instead" during use case review is far cheaper than discovering the missing flow was never actually decided once real users find it in production.
+  </div>
+
+  <h2>Where it's most worth using</h2>
+  <p>Use case testing pays off most for goal-oriented, multi-step user journeys — checkout, onboarding, returns, approval workflows — where the value is in the whole path succeeding, not any single function in isolation. For a simple, single-action feature, a plain scenario list is usually enough; the structure of a full use case starts earning its overhead once there's a real journey with branches worth mapping out deliberately.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
