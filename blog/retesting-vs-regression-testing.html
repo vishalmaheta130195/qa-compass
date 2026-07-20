@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Retesting vs. Regression Testing: Confirming the Fix Isn't the Same as Confirming Nothing Else Broke — QA Compass</title>
+<meta name="description" content="Why retesting and regression testing are two separate steps after a fix, and why skipping the second one is how 'confirmed fixed' bugs still ship broken releases." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">7 August 2026 · Testing practice</div>
+  <h1>Retesting vs. Regression Testing: Confirming the Fix Isn't the Same as Confirming Nothing Else Broke</h1>
+
+  <p>These two happen back to back after almost every fix, which is exactly why they get treated as one step instead of two. They're answering different questions. Retesting asks: is the specific bug that was reported actually fixed. Regression testing asks: did fixing it break anything that used to work. Skipping the second one because the first one passed is one of the most common ways a "confirmed fixed" bug still ships a broken release.</p>
+
+  <h2>Retesting: narrow, targeted, specific</h2>
+  <p>Retesting means running the exact original failing steps — the same preconditions, same input, same sequence — against the fix, to confirm the specific reported behavior is now correct. It's narrow by design: it only tells you about the one issue it's checking, nothing about the rest of the system. I covered this in more depth in the <a href="bug-life-cycle.html">bug life cycle</a> post — it's the "Retest" stage specifically, and treating a "Fixed" status as unverified until this step has actually run against the original steps.</p>
+
+  <h2>Regression testing: broad, exploratory, protective</h2>
+  <p>Regression testing checks whether previously working functionality still works after a change — not the bug that was fixed, but everything around it that could plausibly have been affected. A fix that touches shared code, a common utility function, or a piece of state used elsewhere in the app can easily resolve the reported bug while quietly breaking something unrelated that nobody thought to check.</p>
+
+  <h2>Why both are necessary, not redundant</h2>
+  <p>A fix can pass retesting perfectly — the original bug is genuinely gone — while simultaneously breaking three other things regression testing would have caught. The two aren't sequential steps toward the same goal; they're two different questions that both need answering before a fix is actually safe to ship. Running only retesting after every fix is how a codebase slowly accumulates regressions that nobody explicitly signed off on, one small "safe" fix at a time.</p>
+
+  <div class="callout">
+    A practical rule of thumb: the more shared or central the code being changed is, the more regression testing matters relative to retesting. A fix isolated to one rarely-used screen has a small blast radius. A fix inside a shared authentication function, a common date formatter, or anything else touched by many features deserves a regression pass proportional to how many things depend on it — not just a quick retest of the original bug.
+  </div>
+
+  <h2>What this looks like in practice</h2>
+  <p>Retest first, using the original steps exactly as reported. Then run a regression pass scoped to what the fix actually touched — the affected module at minimum, and the broader smoke-test suite if the change was to shared or central code. Skipping straight from "the bug is gone" to "ship it" is exactly the gap where a fix quietly introduces a new problem nobody was looking for.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
