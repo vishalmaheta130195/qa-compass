@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SDLC Models: How Each One Changes What Testing Looks Like — QA Compass</title>
+<meta name="description" content="Waterfall, V-Model, Iterative, Spiral, and Agile explained through where testing sits in each one, and what that does to a QA engineer's day-to-day." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">31 July 2026 · Testing practice</div>
+  <h1>SDLC Models: How Each One Changes What Testing Looks Like</h1>
+
+  <p>In the <a href="sdlc.html">SDLC post</a> I covered the phases every model shares in some form. What actually changes between models isn't the list of phases — it's how they're arranged in time, and that arrangement changes what a QA engineer's day-to-day actually looks like far more than any process document admits.</p>
+
+  <h2>Waterfall: testing as a single late phase</h2>
+  <p>Requirements, design, implementation, testing, deployment — each phase fully completes before the next begins. Testing happens once, at the end, against a fully built product. The upside is a clear, well-defined scope to test against. The downside is that any defect rooted in a requirement or design decision is now maximally expensive to fix, because everything downstream was already built on top of it. QA's real leverage in Waterfall is upfront — reviewing requirements and design carefully — precisely because there's no later cycle to catch what gets missed.</p>
+
+  <h2>V-Model: testing planned in parallel, executed at the end</h2>
+  <p>The V-Model pairs each development phase with a corresponding testing phase decided at the same time — acceptance tests planned alongside requirements, system tests planned alongside high-level design, and so on — even though execution still happens sequentially, similar to Waterfall. The real difference from plain Waterfall is that test planning isn't deferred; by the time implementation starts, what will eventually be tested is already defined. It reduces (but doesn't eliminate) the risk of testing scope being an afterthought.</p>
+
+  <h2>Iterative: testing repeats every cycle</h2>
+  <p>Instead of one pass through the full life cycle, the product gets built in repeated iterations, each producing a working (if incomplete) version. Testing happens every iteration, against a growing but real product, rather than once against a finished one. This surfaces integration problems far earlier, but it also means regression testing becomes a recurring cost from early on, not a once-at-the-end concern — a regression suite that doesn't scale becomes a bottleneck fast in this model.</p>
+
+  <h2>Spiral: testing scoped by risk, every loop</h2>
+  <p>Spiral adds an explicit risk-analysis step to each iteration, adjusting scope based on what's riskiest at that point in the project. For QA, this means test focus isn't fixed in advance — it shifts each cycle toward whatever's been flagged as the biggest current risk, which requires staying closely tied into planning rather than just receiving a fixed test plan.</p>
+
+  <h2>Agile: testing embedded, not scheduled</h2>
+  <p>Agile compresses the cycle into short sprints, each intended to ship potentially releasable, tested work. Testing isn't a phase that happens after a sprint's development — it happens continuously within it, ideally starting the moment a story is defined, running alongside implementation, and finishing before the sprint closes. This is the model where the parallel relationship between <a href="stlc-vs-sdlc.html">STLC and SDLC</a> becomes most visible and most necessary — there's no separate testing phase left to fall back on if testing starts late.</p>
+
+  <div class="callout">
+    The pattern across all five: the earlier and more frequently a model brings testing into the cycle, the earlier defects get caught and the cheaper they are to fix — but that benefit only shows up if testing actually keeps pace. An iterative or Agile project with testing that quietly falls a sprint behind gets the worst of both worlds: the complexity of constant change, without the early feedback that was supposed to justify it.
+  </div>
+
+  <p>None of these models are right or wrong in the abstract — they fit different kinds of projects and different tolerances for changing requirements. But knowing which one a project is actually using changes something very practical: when in the timeline your test planning needs to start, and how often you should expect to repeat it.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
