@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Types of Non-Functional Testing: Testing the "How Well," Not the "What" — QA Compass</title>
+<meta name="description" content="Performance, security, usability, compatibility, and reliability testing explained by the question each one actually answers." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">29 July 2026 · Testing practice</div>
+  <h1>Types of Non-Functional Testing: Testing the "How Well," Not the "What"</h1>
+
+  <p>Functional testing checks whether a feature does what it's supposed to do. Non-functional testing checks whether it does that well enough to actually be usable in the real world — fast enough, safe enough, stable enough, and pleasant enough. A feature can pass every functional test and still be genuinely unusable, which is exactly the gap this category exists to close.</p>
+
+  <h2>Performance testing: how fast, under normal conditions</h2>
+  <p>This measures response time, throughput, and resource usage under expected, realistic load — not extreme conditions, just normal usage. It answers a simple question that functional testing never touches: does this feel fast enough for someone to actually want to use it, on a normal day, with a normal number of other people using it too.</p>
+
+  <h2>Load testing: how it behaves at expected peak</h2>
+  <p>Load testing pushes the system to the volume it's actually expected to handle — the busiest realistic hour, the biggest realistic batch job — and checks whether it holds up gracefully rather than degrading badly. This is where a feature that felt fine in every functional test starts timing out, queuing, or silently dropping requests once enough people are using it simultaneously.</p>
+
+  <h2>Stress testing: what happens past the breaking point</h2>
+  <p>Where load testing checks expected peak, stress testing deliberately goes beyond it — well past capacity — to see how the system fails, not whether it fails. Does it degrade in a controlled, recoverable way, or does it crash hard and take unrelated functionality down with it? A system that fails predictably under extreme stress is in a very different position than one that fails catastrophically.</p>
+
+  <h2>Security testing: what an adversary could do, not just what a user would</h2>
+  <p>This shifts the mindset entirely — instead of asking "does this work for a normal user," it asks "what could someone with bad intentions get away with." Unvalidated input, weak authentication, data exposure, and permission checks that only exist client-side are the recurring categories. It's the one non-functional area where thinking like an attacker, not a user, is the actual skill being tested.</p>
+
+  <h2>Usability testing: whether it's actually pleasant to use</h2>
+  <p>Usability testing checks whether real people can accomplish their goal efficiently and without confusion, often by watching someone unfamiliar with the product try to use it. A workflow can be functionally flawless and still fail here if users consistently hesitate, misclick, or need help to complete something that was supposed to be simple.</p>
+
+  <h2>Compatibility testing: does it work everywhere it's supposed to</h2>
+  <p>This checks behavior across the actual combinations of browsers, devices, operating systems, and screen sizes your real users have — not just the one environment development happened on. A feature can work perfectly on the developer's machine and still fail for a meaningful slice of real users on a different combination nobody explicitly tested.</p>
+
+  <h2>Reliability testing: does it keep working over time</h2>
+  <p>Reliability testing runs a system over an extended period under realistic ongoing use, watching for the problems that only appear with time — memory leaks, gradually degrading performance, resources that never get released properly. These issues are often invisible in a short functional test and only show up after hours or days of continuous operation.</p>
+
+  <div class="callout">
+    None of these types replace functional testing, and none of them replace each other — a system can pass every one of them individually and still have a gap nobody tested for. The useful habit is asking, for any given feature, which of these categories actually matters for it, rather than assuming functional correctness was ever the whole picture.
+  </div>
+
+  <p>The common thread across all of them: functional testing tells you the feature works. Non-functional testing tells you whether it works well enough, safely enough, and consistently enough for someone to actually rely on it — which, for most real products, is the bar that actually matters.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
