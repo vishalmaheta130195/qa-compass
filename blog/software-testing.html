@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Software Testing: The One Skill Underneath All the Terminology — QA Compass</title>
+<meta name="description" content="What software testing actually is underneath all the process vocabulary, and the mindset shift that separates testing from just using a product." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">30 July 2026 · Testing practice</div>
+  <h1>Software Testing: The One Skill Underneath All the Terminology</h1>
+
+  <p>Most of what gets written about testing is process vocabulary — life cycles, levels, scenario versus case, priority versus severity. All of it is useful, and I've written about most of it on this blog. But it's worth stepping back to the actual skill underneath all of it, because that's the part no framework or template teaches on its own: the ability to look at something that appears to work and find the specific way it doesn't.</p>
+
+  <h2>Testing isn't using the product</h2>
+  <p>Using a product means following the path it was designed for and checking that it gets you where you expected. Testing means deliberately stepping off that path — entering something unexpected, doing steps out of order, interrupting a flow halfway through — because that's where the assumptions built into the product actually get exposed. A developer using their own feature almost always follows the intended path, simply because they know what it is. A tester's entire value is in not being limited to it.</p>
+
+  <h2>Verification is the mechanical core</h2>
+  <p>Underneath the terminology, testing is repeatedly comparing actual behavior against expected behavior and being precise about both sides of that comparison. "It seems fine" isn't a test result — a test result is "given this input, under this condition, the expected output was X, and the actual output was Y." Vague expectations produce vague bug reports, and vague bug reports are exactly what makes a "Fixed" status unreliable later.</p>
+
+  <h2>Why it exists at all</h2>
+  <p>Every defect has a cost, and that cost grows the later it's caught — cheapest during requirement analysis, more expensive once code is written, far more expensive once it reaches a user, and most expensive when it causes real damage in production. Testing isn't a phase tacked onto development to slow it down; it's the mechanism that catches defects while they're still cheap to fix, rather than after they've become expensive ones.</p>
+
+  <h2>The mindset shift that actually matters</h2>
+  <p>The single biggest shift going from "user" to "tester" is treating every confident assumption as something to check rather than trust. Not "does the happy path work" but "what happens right at the boundary of what's allowed," "what happens if this step is skipped," "what happens if two people do this at the same time." None of those questions require special tools — they require the habit of asking them before someone else finds the answer in production.</p>
+
+  <div class="callout">
+    If you want a concrete way to build that habit, try applying it somewhere with zero technical complexity first — I wrote about doing exactly this with a plain pen in an earlier post. Once the habit of "what would break this" feels natural on something trivial, it transfers directly to actual features.
+  </div>
+
+  <h2>Where to go deeper</h2>
+  <p>This post is deliberately the foundation, not the detail — the specific mechanics live in the other posts here: how testing splits across <a href="levels-of-testing.html">levels</a>, the <a href="types-of-non-functional-testing.html">non-functional categories</a> that check more than correctness, how a found defect moves through its <a href="bug-life-cycle.html">life cycle</a>, and the vocabulary — <a href="test-scenario-vs-test-case.html">scenario vs. case</a>, <a href="priority-vs-severity.html">priority vs. severity</a> — that makes all of that communicable across a team.</p>
+
+  <p>All of that structure exists to support one underlying skill: the discipline of not trusting that something works just because it appears to, until you've actually tried to prove otherwise.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
