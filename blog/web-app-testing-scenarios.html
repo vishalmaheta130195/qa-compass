@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Web App Testing Scenarios Worth Writing Down — QA Compass</title>
+<meta name="description" content="A practical set of test scenario categories for web applications, and the specific scenarios inside each one that are easy to forget." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">4 August 2026 · Testing practice</div>
+  <h1>Web App Testing Scenarios Worth Writing Down</h1>
+
+  <p>Following on from <a href="test-scenario-vs-test-case.html">test scenarios vs. test cases</a> and <a href="web-app-vs-website-vs-mobile-app.html">why web apps need a different test approach</a> — here's the actual scenario list I reach for on a typical web app, organized by the category of risk each one is checking for.</p>
+
+  <h2>Authentication and session</h2>
+  <ul>
+    <li>Login with valid and invalid credentials, including a locked or disabled account.</li>
+    <li>Session behavior on refresh, on a second tab, and after the session naturally expires mid-action.</li>
+    <li>What happens if a logged-in user's permissions change while they're still in an active session.</li>
+    <li>Logout actually invalidating the session, not just redirecting to a login screen while the token still works.</li>
+  </ul>
+
+  <h2>Forms and input</h2>
+  <ul>
+    <li>Required fields left empty, and fields filled with the minimum and maximum allowed length.</li>
+    <li>Submitting the same form twice quickly — does it create a duplicate record, or is that prevented?</li>
+    <li>Special characters, emoji, and unexpected formats in text fields that assume plain text.</li>
+    <li>Navigating away mid-form and returning — is partially entered data preserved, lost, or does it silently submit something incomplete?</li>
+  </ul>
+
+  <h2>Navigation and state</h2>
+  <ul>
+    <li>Using the browser's back and forward buttons through a multi-step flow, not just the app's own navigation.</li>
+    <li>Deep-linking directly to a page that normally requires earlier steps first.</li>
+    <li>Opening the same resource in two tabs and making conflicting changes in each.</li>
+  </ul>
+
+  <h2>Data and persistence</h2>
+  <ul>
+    <li>Create, then immediately edit, then delete the same record — does each step correctly reflect the last?</li>
+    <li>What a list or table looks like with zero records, exactly one record, and enough records to require pagination.</li>
+    <li>Concurrent edits to the same record from two different sessions.</li>
+  </ul>
+
+  <h2>Errors and edge conditions</h2>
+  <ul>
+    <li>A slow or dropped network mid-request — does the UI hang, show a clear error, or silently fail?</li>
+    <li>Server error responses (not just the success path) — does the UI show something useful, or a raw error?</li>
+    <li>Clicking a submit button multiple times rapidly before the first request resolves.</li>
+  </ul>
+
+  <div class="callout">
+    Notice how few of these are about whether a feature technically works when used exactly as intended — almost all of them are about the boundary: refresh, back button, double submission, network hiccup, empty state. That's deliberate. The intended path is what gets built correctly by default; the boundaries are where the actual testing value is.
+  </div>
+
+  <p>This isn't an exhaustive list for any specific app — it's a starting checklist to adapt. The categories (auth, forms, navigation, data, errors) are the ones that show up on nearly every web app regardless of what it does; the specific scenarios inside each one are worth reviewing against whatever you're actually testing, since the exact risks shift with what the feature does.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
