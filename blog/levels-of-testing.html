@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Levels of Testing: What Each One Actually Catches — QA Compass</title>
+<meta name="description" content="Unit, integration, system, and acceptance testing explained by what each one catches that the others structurally can't." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">25 July 2026 · Testing practice</div>
+  <h1>Levels of Testing: What Each One Actually Catches</h1>
+
+  <p>The four levels — unit, integration, system, and acceptance — get taught as a pyramid, and the shape is a useful reminder of volume, but it hides the more useful fact: each level catches a category of bug the others structurally cannot. Skipping one doesn't just mean "less testing," it means a specific kind of defect has no layer left to catch it.</p>
+
+  <h2>Unit testing: is this one piece correct in isolation?</h2>
+  <p>Unit tests check a single function or component with everything else mocked out or stubbed away. They're fast, they run constantly, and they're the only level that pinpoints a broken piece of logic precisely — a failing unit test tells you exactly which function misbehaved, not just that something somewhere did. Their blind spot is exactly what they exclude by design: two units that are each individually correct can still fail the moment they're wired together, and unit tests will never see that.</p>
+
+  <h2>Integration testing: do the pieces agree with each other?</h2>
+  <p>This is where the assumptions each unit made about the others get checked against reality — does the data format the frontend expects actually match what the API returns, does the database call handle the exact error shape the calling code assumes it will. Most of the bugs that "somehow" made it past thorough unit testing are integration bugs: each side was tested correctly against a mocked version of the other, and the mock was slightly wrong.</p>
+
+  <h2>System testing: does the whole product behave correctly, end to end?</h2>
+  <p>Here the system is tested as a complete, deployed whole — real environment, real data flow, no mocks anywhere. This is the level that catches problems no smaller scope could: a feature that works fine alone but breaks under the memory or performance profile of the full application, or a workflow that only fails when three unrelated features interact in an order nobody explicitly tested before.</p>
+
+  <h2>Acceptance testing: does it solve the actual problem?</h2>
+  <p>Every earlier level can pass cleanly while the product still fails this one, because acceptance testing asks a different question entirely: does this match what the business or the user actually needed, not just what the ticket technically specified. A feature can be bug-free and still fail UAT because it solves the wrong problem, or solves the right problem in a way that doesn't fit how people actually work.</p>
+
+  <div class="callout">
+    None of these levels substitutes for another — a product with excellent unit coverage and no integration testing will still ship integration bugs, no matter how green the unit test suite looks. The pyramid shape describes how much of each you typically need, not which ones are optional.
+  </div>
+
+  <p>When a bug escapes to production, it's worth asking which level should have caught it and didn't — not to assign blame, but because the answer usually points at a specific gap: a missing integration test around a boundary, a system test that never exercised that combination of features, or a UAT session that never included the user who actually hits that workflow daily. The fix is rarely "test more" in general; it's filling the one level that had the hole.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
