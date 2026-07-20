@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Types of Testing Environment: Why "It Worked in Staging" Isn't Enough — QA Compass</title>
+<meta name="description" content="Development, QA, staging, and production environments explained, and why the gaps between them are where a surprising number of real bugs actually live." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">1 August 2026 · Testing practice</div>
+  <h1>Types of Testing Environment: Why "It Worked in Staging" Isn't Enough</h1>
+
+  <p>A test result is only as trustworthy as the environment it ran in. Code that passes every test in one environment can fail immediately in another, not because the tests were wrong, but because the environment quietly wasn't equivalent to where it actually matters. Knowing what each environment is for — and what it doesn't guarantee — is as much a part of testing as writing the test cases themselves.</p>
+
+  <h2>Development: built for building, not for trusting</h2>
+  <p>This is where a developer runs and checks their own code, often with mocked data, stubbed integrations, and debug tools active. It's useful for fast iteration and is deliberately not representative of anything else — verbose logging, relaxed error handling, and test data that doesn't resemble real usage are all normal here. Treating a dev-environment pass as meaningful evidence of correctness is the first place false confidence creeps in.</p>
+
+  <h2>QA / Test: built to be trustworthy, not necessarily production-scale</h2>
+  <p>A dedicated QA environment aims for closer parity with production — real integrations rather than mocks, more realistic data, actual deployment steps rather than running from a local machine. This is usually where formal test cases actually get executed. Its main risk is silent drift: configuration or data volume differences from production that accumulate over time until "it passed in QA" stops meaning what it used to.</p>
+
+  <h2>Staging: as close to production as it gets before it is production</h2>
+  <p>Staging is meant to mirror production closely enough that a pass here is close to a guarantee — same infrastructure shape, similar data volume, same deployment process. The value of staging is entirely dependent on how honestly it matches production; a staging environment that's secretly running on smaller infrastructure, or with a fraction of the real data volume, will hide exactly the kind of scale-related bug it exists to catch.</p>
+
+  <h2>Production: the only environment where the test is real users</h2>
+  <p>Nothing in an earlier environment perfectly replicates production's actual traffic patterns, real third-party service behavior, or the genuinely unpredictable ways real users interact with a system. This is why smoke testing immediately after a production deployment isn't redundant with staging testing — it's checking a fundamentally different thing: not "does the feature work," but "did this specific deployment, in this specific environment, actually go as expected."</p>
+
+  <div class="callout">
+    Most environment-related bugs aren't caused by any single environment being wrong — they're caused by an assumption that two environments were equivalent when they quietly weren't: a config value, an API key pointing somewhere unexpected, a data volume difference large enough to change performance characteristics. Verifying environment parity is worth treating as its own checklist, separate from testing the feature itself.
+  </div>
+
+  <p>When a bug shows up only in one environment and nowhere else, the environment difference itself is usually the more useful thing to investigate first — more useful, in a lot of cases, than the feature code the bug appears to be in.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
