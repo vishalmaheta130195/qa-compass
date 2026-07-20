@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A Test Plan Template That Actually Gets Used — QA Compass</title>
+<meta name="description" content="A practical, no-fluff test plan template — the sections that actually earn their place, and what to write in each one." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">2 August 2026 · Testing practice</div>
+  <h1>A Test Plan Template That Actually Gets Used</h1>
+
+  <p>Most test plan templates die the same way: someone fills them out once, nobody reads them again, and by the next project everyone's just copying the previous plan and hoping it still applies. The templates that survive tend to be the shorter ones, where every section earns its place by answering a question someone would actually ask mid-project. Here's the version I keep coming back to.</p>
+
+  <h2>1. Scope</h2>
+  <p>What's being tested, and just as importantly, what explicitly isn't. A one-line "features to be tested" list and a matching "features not to be tested" list, with a reason for each exclusion. This is the section people skip writing and then argue about three weeks later.</p>
+
+  <h2>2. Test approach</h2>
+  <p>Which levels and types of testing apply here — functional, regression, performance, security, whichever are relevant — and roughly how much weight each gets. Not a process essay, just enough to make deliberate tradeoffs visible instead of implicit.</p>
+
+  <h2>3. Entry and exit criteria</h2>
+  <p>Entry: what has to be true before testing can meaningfully start (a stable build, a working environment, a certain feature complete). Exit: what has to be true before testing can be considered done (a pass rate, zero open criticals, whatever the team actually agrees matters). Without this section, "are we done testing" becomes a subjective argument instead of a checklist.</p>
+
+  <h2>4. Test environment</h2>
+  <p>Which environment testing runs in, and how closely it matches production — data volume, integrations, configuration. If there's a known gap between this environment and production, write it down here explicitly rather than letting it become a surprise later.</p>
+
+  <h2>5. Resources and responsibilities</h2>
+  <p>Who's testing what, and who to go to when something's blocked. On small teams this can be one line; the value isn't formality, it's making sure ownership isn't ambiguous when someone's out sick during a critical week.</p>
+
+  <h2>6. Schedule</h2>
+  <p>Rough timeline for each major testing activity, tied to the project's actual milestones rather than a generic week-by-week template. This is the section most likely to need revision — that's fine, a schedule that never changes probably wasn't looked at.</p>
+
+  <h2>7. Risks and assumptions</h2>
+  <p>What could derail this plan — a dependency on another team's delivery, an environment that isn't stable yet, a feature still in flux — and what happens if it does. This section is what turns a plan into something that survives contact with a real project instead of becoming obsolete the first time something changes.</p>
+
+  <h2>8. Deliverables</h2>
+  <p>What testing will actually produce — test cases, a bug report, a summary at the end — so it's clear upfront what "finished" looks like as an artifact, not just as a feeling.</p>
+
+  <div class="callout">
+    The test of a good template isn't whether it looks thorough — it's whether someone could open it three weeks into the project and get a real, useful answer to "what are we testing, when are we done, and what happens if X goes wrong." If a section doesn't help answer one of those, it's decoration, not documentation.
+  </div>
+
+  <p>Adapt the weight of each section to the project — a two-week feature doesn't need the same schedule detail as a multi-month release. The structure above is a starting point, not a form to fill in mechanically; the sections that don't apply to your project are worth deleting rather than leaving blank.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
