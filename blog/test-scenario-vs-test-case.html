@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test Scenario vs. Test Case: Why Mixing Them Up Costs You Coverage — QA Compass</title>
+<meta name="description" content="The practical difference between test scenarios and test cases, and why treating them as the same thing quietly shrinks your test coverage." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">23 July 2026 · Testing practice</div>
+  <h1>Test Scenario vs. Test Case: Why Mixing Them Up Costs You Coverage</h1>
+
+  <p>These two terms get used interchangeably so often that a lot of testers never notice they're actually solving two different problems. A test scenario answers "what should we verify?" A test case answers "exactly how do we verify it, and with what?" Confuse the two, and you tend to lose the scenario layer entirely — jumping straight to detailed steps before you've actually mapped out everything that needs testing.</p>
+
+  <h2>Test scenarios: the map</h2>
+  <p>A scenario is a single line describing a piece of functionality to verify — something like "verify user can reset their password" or "verify checkout with an expired coupon code." It's deliberately high-level and doesn't specify steps, data, or exact expected output. Its job is coverage: a good scenario list is essentially a checklist of everything the feature needs to handle, written before you've committed to how you'll test any single one of them.</p>
+
+  <h2>Test cases: the execution</h2>
+  <p>A test case takes one scenario and makes it concrete: preconditions, exact steps, specific input data, and a precise expected result. Where a scenario says "verify checkout with an expired coupon code," the test case specifies which coupon, what the cart contains, what error message should appear, and where. Multiple test cases often come from a single scenario — different coupon states, different cart contents, different account types — all still testing the same underlying behavior.</p>
+
+  <h2>Where teams actually lose coverage</h2>
+  <p>The failure mode isn't usually "we forgot test cases." It's "we never wrote the scenario list, so we never noticed a whole category of behavior we should have tested." Skipping straight to test cases tends to bias toward whatever's easiest to write steps for — usually the happy path — because there was no scenario list forcing a broader look first.</p>
+
+  <p>Writing scenarios first, as a standalone pass before any test case exists, is what surfaces the boring-but-critical ones: what happens on a duplicate submission, what happens if a session expires mid-flow, what happens with the field left empty. None of those are hard to test once you've named them. The hard part is remembering to name them at all, which is exactly the job the scenario layer does.</p>
+
+  <div class="callout">
+    A rough gut-check: if your test documentation goes straight from a requirements doc to a spreadsheet of detailed steps, with nothing in between, there's a good chance the scenario layer got skipped — and with it, some category of behavior nobody explicitly decided to test or not test.
+  </div>
+
+  <h2>A practical way to use both</h2>
+  <p>Write scenarios first, fast, without worrying about exact wording — just enough to build a list you can review with the team for gaps. Once the list feels reasonably complete, convert each scenario into one or more test cases, adding the specifics only at that stage. Reviewing the scenario list with a developer or product owner before writing a single detailed step usually catches missing behavior far cheaper than reviewing full test cases would.</p>
+
+  <p>Neither layer replaces the other. Scenarios without cases are a plan nobody executed. Cases without scenarios are execution with no guarantee anyone checked the plan was complete in the first place.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
