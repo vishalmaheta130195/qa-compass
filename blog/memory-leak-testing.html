@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Memory Leak Testing: Catching the Bug That Only Shows Up Later — QA Compass</title>
+<meta name="description" content="Why memory leaks slip past normal functional testing, and a practical approach to actually catching them before users do." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">3 August 2026 · Testing practice</div>
+  <h1>Memory Leak Testing: Catching the Bug That Only Shows Up Later</h1>
+
+  <p>A memory leak happens when an application keeps allocating memory it no longer needs and never releases it back. One click, one action, one short test session — none of it shows the problem. It only becomes visible after the same action repeats many times, or the app runs for hours, which is exactly why it survives so many rounds of normal functional testing untouched.</p>
+
+  <h2>Why normal testing misses it</h2>
+  <p>A typical functional test case runs a flow once, checks the result, and moves on. That's precisely the shape of test that a memory leak is invisible to — the leak might be a few kilobytes per action, utterly unnoticeable in a single pass, and completely undetectable unless someone repeats that exact action dozens or hundreds of times in a row while actually watching memory usage rather than just the on-screen result.</p>
+
+  <h2>The symptoms, before you've confirmed the cause</h2>
+  <p>Long before you've pinned down where memory is leaking, there are usually visible warning signs: the app gradually slowing down the longer it's left open, increasing lag on actions that were fast earlier in the session, unexpected crashes after extended use rather than immediately, or a device/browser tab that's noticeably heavier to run after an hour than it was in the first five minutes. None of these prove a leak on their own, but they're the pattern that should prompt looking for one.</p>
+
+  <h2>A practical way to actually test for it</h2>
+  <p>Pick an action that plausibly allocates memory — opening and closing a modal, navigating between two screens, loading and clearing a list — and repeat it deliberately, many times in a row, while watching memory usage (most browsers and mobile OS tools expose this directly). The signature of a leak is memory that climbs and never comes back down to baseline between repetitions, rather than memory that rises and falls as expected with each action.</p>
+
+  <p>A useful comparison: take a memory reading at the start, run the repeated action 50 or 100 times, then force garbage collection or wait for it to settle, and take another reading. If memory hasn't returned close to where it started, something isn't being released. Doing this deliberately, as its own test pass rather than hoping it surfaces during regular testing, is really the only way it gets caught before release.</p>
+
+  <div class="callout">
+    This is really a specific case of <a href="types-of-non-functional-testing.html">reliability testing</a> — the category concerned with whether a system keeps working correctly over time, not just on the first try. If you're already running longer soak tests for reliability, watching memory usage during them is close to free; if you're not, memory leak testing is a good reason to start.
+  </div>
+
+  <p>Leaks that ship unnoticed tend to surface first as vague user complaints — "the app gets slow after a while" — rather than a specific bug report, which makes them hard to trace after the fact. Testing for them deliberately, before release, is far cheaper than trying to reproduce a slowdown a user described from memory three weeks later.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
