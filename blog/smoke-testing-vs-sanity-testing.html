@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smoke Testing vs. Sanity Testing: Wide and Shallow vs. Narrow and Deep — QA Compass</title>
+<meta name="description" content="Smoke testing and sanity testing both take minutes, but they check completely different things — here's how to tell them apart and use both correctly." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">11 August 2026 · Testing practice</div>
+  <h1>Smoke Testing vs. Sanity Testing: Wide and Shallow vs. Narrow and Deep</h1>
+
+  <p>Both of these are quick — a matter of minutes, not a full test cycle — which is exactly why they get confused for each other. They're checking different things at different moments. Smoke testing asks: is this build stable enough to bother testing at all. Sanity testing asks: does this specific change actually make sense, narrowly and quickly, without a full regression pass.</p>
+
+  <h2>Smoke testing: is the build even worth testing</h2>
+  <p>Smoke testing runs against a brand-new build, covering the most critical paths across the whole application — can a user log in, does the main page load, do the core flows at least start without immediately erupting into errors. It's intentionally broad and intentionally shallow: the goal isn't to find subtle bugs, it's to catch a build that's fundamentally broken before anyone spends hours running detailed test cases against something that was never stable to begin with.</p>
+
+  <h2>Sanity testing: does this specific change hold up</h2>
+  <p>Sanity testing happens after a specific fix or minor change, focused narrowly on the affected area and its immediate surroundings — not the whole application, just enough to confirm the change is reasonable and didn't obviously break something adjacent. It's narrower than the <a href="retesting-vs-regression-testing.html">regression testing</a> a bigger change would warrant, and it's usually unscripted — a quick, focused check rather than a formal documented pass.</p>
+
+  <h2>The shape is the real difference</h2>
+  <p>Smoke testing is wide and shallow: touch every major area briefly, go deep on none of them. Sanity testing is narrow and deep-ish: go deep on one specific area, touch nothing outside it. Picturing it that way makes the confusion easier to avoid — asking "is this smoke or sanity" is really asking "am I checking breadth across the whole build, or depth on one specific change."</p>
+
+  <div class="callout">
+    A simple trigger to remember which applies: a new build lands → smoke test first, before anything else. A small fix or minor change ships → sanity test that specific area. If both a new build and a batch of fixes arrive together, both apply, in that order — smoke first to confirm the build is worth testing at all, then sanity checks on the individual changes within it.
+  </div>
+
+  <p>Neither replaces a full test cycle, and neither should be mistaken for one. They exist to answer a fast, specific question early — is this worth testing further, and does this one change look right — so that deeper testing effort doesn't get spent on a build or a fix that was obviously broken from the first few minutes.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
