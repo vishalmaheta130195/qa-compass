@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Equivalence Partitioning and Boundary Value Analysis: Testing Less, Finding More — QA Compass</title>
+<meta name="description" content="Two classic test design techniques that cut down how many test cases you need, and why bugs cluster exactly where these techniques look." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">12 August 2026 · Testing practice</div>
+  <h1>Equivalence Partitioning and Boundary Value Analysis: Testing Less, Finding More</h1>
+
+  <p>You can't test every possible input a field could receive — for a field accepting numbers 1 to 1000, that's a thousand test cases before you've even considered invalid input. These two techniques solve that problem from opposite directions: one reduces how much you need to test by grouping inputs that should behave identically, the other tells you exactly where within that reduced set the real risk is concentrated.</p>
+
+  <h2>Equivalence partitioning: group first, test one from each group</h2>
+  <p>The idea is that inputs which should be treated the same way by the system can be grouped into a single partition, and testing one representative value from that partition is just as informative as testing all of them — assuming the system genuinely treats them identically. For an age field accepting 18 to 65, there are roughly three partitions: below 18 (invalid), 18 through 65 (valid), and above 65 (invalid). Instead of testing every number in each range, one value from each — say 10, 40, and 90 — covers the meaningful behavior.</p>
+  <p>The technique only works if the grouping assumption is actually correct. If the system secretly treats 40-year-olds differently from 60-year-olds for some business reason nobody mentioned, "18 through 65" was never really one partition, and testing only 40 would miss that. Partitioning is a hypothesis about the system's behavior, not a guaranteed shortcut — it's worth double-checking against the actual requirement, not just the visible range.</p>
+
+  <h2>Boundary value analysis: the edges are where bugs actually live</h2>
+  <p>Off-by-one errors — using <code>&gt;</code> instead of <code>&gt;=</code>, or forgetting whether a range is inclusive — are one of the most common categories of defect, and they only show up exactly at a boundary, never in the middle of a partition. Boundary value analysis tests the values immediately at, just below, and just above each edge: for the 18-to-65 range, that's 17, 18, 19, 64, 65, and 66 — six precise values instead of an arbitrary pick from each partition.</p>
+  <p>This is why the two techniques are almost always taught and used together: equivalence partitioning tells you which regions of input matter, and boundary value analysis tells you exactly which values inside those regions are actually worth testing carefully, because that's where an implementation is most likely to get the comparison wrong.</p>
+
+  <div class="callout">
+    A quick way to apply both at once to any bounded field: identify the valid range, test one clearly-valid value in the middle, then test the four values straddling each edge (n-1, n, and the mirrored pair on the other boundary). For a single-boundary rule — "must be at least 18" — that's just three values: 17, 18, and 19. Small number of test cases, and it's exactly where an inclusive/exclusive mistake would actually surface.
+  </div>
+
+  <p>These are two of the simplest test design techniques to learn and among the most reliably useful — every bounded input field, every range check, every "must be between X and Y" rule is a candidate. If a bug tracker shows a cluster of off-by-one defects around range checks, that's usually a sign boundary value analysis wasn't applied consistently, not that the developers were being careless.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
