@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GUI Testing: The Bugs That Never Throw an Error — QA Compass</title>
+<meta name="description" content="GUI testing goes past checking that elements exist — it's about catching problems that are technically correct but practically wrong." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">27 July 2026 · Testing practice</div>
+  <h1>GUI Testing: The Bugs That Never Throw an Error</h1>
+
+  <p>Functional testing asks whether the system does the right thing. GUI testing asks something quieter but just as important: does it look and behave the way a person would reasonably expect, even when nothing is technically broken. A button that submits the form correctly but is one pixel outside its container, or a success message that appears in a color that reads as an error, will never fail a functional test — and will absolutely confuse a real user.</p>
+
+  <h2>Layout and visual correctness</h2>
+  <p>This covers alignment, spacing, overlapping elements, and text that gets cut off or wraps awkwardly. The trap is testing only at the screen size and zoom level the design was built at. Layouts that look perfect at one resolution routinely break at another — elements overlapping, buttons pushed off-screen, text truncating mid-word. Testing a handful of realistic screen sizes and browser zoom levels catches far more than testing one perfect viewport ever will.</p>
+
+  <h2>Consistency across the product</h2>
+  <p>The same type of button, the same kind of error message, the same date format should look and behave the same way everywhere they appear. Inconsistency is rarely a single dramatic bug — it's dozens of small mismatches that individually seem too minor to log, but collectively make a product feel unpolished and unpredictable. Worth deliberately comparing similar components across different screens, not just testing each screen in isolation.</p>
+
+  <h2>State changes that are easy to skip</h2>
+  <p>Loading states, empty states, error states, and disabled states get tested far less often than the "happy" fully-loaded state, simply because they're less obvious to remember. What does the screen look like the first time a user has no data yet? What happens visually if an image fails to load? Is a disabled button clearly disabled, or does it just look slightly greyed out in a way that's easy to miss? These states matter because they're exactly the moments a user is most likely to be confused or stuck.</p>
+
+  <h2>Usability, not just correctness</h2>
+  <p>A control can be functionally correct and still be a usability problem — a tiny tap target on mobile, a confirmation dialog with "Cancel" and "Confirm" in a color scheme that makes them hard to tell apart, an icon with no label that only makes sense if you already know what it does. None of these are bugs in the traditional sense. All of them cause real users to make mistakes or give up, which is exactly what GUI testing exists to catch before a real user does.</p>
+
+  <div class="callout">
+    A practical habit: when reviewing a screen, look at it twice — once checking "is everything technically working," and once checking "would this make sense to someone seeing it for the first time, with no context." Those are genuinely different questions, and the second one is where most GUI issues actually live.
+  </div>
+
+  <p>None of this shows up in a stack trace, which is exactly why it needs deliberate attention rather than assuming it'll surface on its own during functional testing. A product can pass every functional test and still frustrate its users on the first screen they see — GUI testing is the layer that's supposed to catch that before they do.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
