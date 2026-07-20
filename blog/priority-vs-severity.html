@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Priority vs. Severity: Two Axes, Not One Scale — QA Compass</title>
+<meta name="description" content="Why priority and severity are independent measurements, not two words for the same thing, and how mixing them up leads to the wrong bugs getting fixed first." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">24 July 2026 · Testing practice</div>
+  <h1>Priority vs. Severity: Two Axes, Not One Scale</h1>
+
+  <p>These two get lumped together as if they're just different words for "how bad is this bug," and that's the root of most of the confusion around them. They're independent measurements. Severity is a technical judgment: how badly does this break the system. Priority is a business judgment: how soon does this need to get fixed. A bug can be high on one and low on the other, and the mismatches are exactly where things get interesting.</p>
+
+  <h2>Severity: what the bug actually does</h2>
+  <p>Severity is about functional impact, and it shouldn't change based on how busy the release is or who's asking. A crash that takes down the entire application is high severity whether it happens in a core flow or an obscure admin page nobody's opened in months. Severity is measured against the system, not against the calendar.</p>
+
+  <h2>Priority: how soon it gets attention</h2>
+  <p>Priority is about business urgency, and unlike severity, it's expected to shift — as a release date approaches, as more users report hitting the same issue, or as a workaround gets found that buys time. Priority answers "what do we fix today, this week, this cycle" — a question severity was never meant to answer on its own.</p>
+
+  <h2>The classic mismatches</h2>
+  <p>The pairing that actually teaches the concept is the two cases where severity and priority disagree:</p>
+  <ul>
+    <li><strong>High severity, low priority</strong> — a crash in a rarely-used admin feature during an unusual sequence of actions. Technically severe (it crashes), but if almost no one hits it, it's reasonable to schedule the fix rather than treat it as an emergency.</li>
+    <li><strong>Low severity, high priority</strong> — a typo in a company name on the homepage, or a broken logo on launch day. Functionally trivial — nothing crashes, nothing is lost — but visible enough to damage trust immediately, so it jumps the queue.</li>
+  </ul>
+  <p>If your bug tracker only has one field for "how bad," cases like these get mis-triaged constantly: the visible typo gets marked low priority because it "isn't really a bug," and the obscure crash gets marked urgent because "crash" sounds scary on paper.</p>
+
+  <div class="callout">
+    A useful gut-check when triaging: ask severity and priority as two separate questions, out loud, even if your tracker only has one field. "How badly does this break the system?" and "How soon do we need this fixed?" often have different answers, and noticing that difference is most of the value of keeping them separate at all.
+  </div>
+
+  <h2>Who usually sets which</h2>
+  <p>Severity is typically a QA or engineering call — it's a technical assessment of impact, and it shouldn't move based on opinion. Priority is more often a shared call between QA, product, and whoever owns the release, because it depends on business context that QA alone doesn't always have visibility into. Neither should be set unilaterally without the other's input, but conflating who sets what is a common source of friction during triage meetings.</p>
+
+  <p>Keep the two fields separate even when it feels redundant. The moment you collapse them into one scale is the moment a technically minor but highly visible bug starts competing on the same axis as a technically severe but invisible one — and one of them is going to lose the argument it shouldn't have had to have.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
