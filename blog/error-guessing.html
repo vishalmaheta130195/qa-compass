@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Error Guessing: The Technique That's Really Just Pattern Recognition — QA Compass</title>
+<meta name="description" content="Error guessing formalizes the intuition experienced testers rely on — the categories of mistake worth checking for before a formal technique ever gets applied." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">14 August 2026 · Testing practice</div>
+  <h1>Error Guessing: The Technique That's Really Just Pattern Recognition</h1>
+
+  <p><a href="equivalence-partitioning-and-boundary-value-analysis.html">Equivalence partitioning</a>, <a href="decision-table-testing.html">decision tables</a>, and boundary analysis are systematic — apply the method correctly and the test cases fall out the other end. Error guessing is the opposite: no formal procedure, just a tester's accumulated sense of where things tend to break, applied to a system they may not know the internals of at all. It sounds unscientific, but it's really just pattern recognition, built from having seen the same categories of mistake show up across many different systems.</p>
+
+  <h2>The recurring categories worth guessing at</h2>
+  <p>Certain kinds of mistake show up across almost every codebase, regardless of what the product actually does:</p>
+  <ul>
+    <li>Empty, null, or missing input where something was assumed to always be present.</li>
+    <li>Special characters, especially in fields that assume plain alphanumeric text.</li>
+    <li>Double-clicking or double-submitting an action meant to happen exactly once.</li>
+    <li>Doing steps out of the expected order, or interrupting a flow partway through.</li>
+    <li>Extremes — the largest allowed value, the smallest, zero, and negative numbers where none were expected.</li>
+    <li>Timing issues — two things happening at almost the same moment that were probably never tested together.</li>
+  </ul>
+  <p>None of these require knowing anything about the specific system. They're a checklist built from having watched the same handful of assumptions get violated over and over, in completely unrelated products.</p>
+
+  <h2>Why it works despite having no formal method</h2>
+  <p>Formal techniques are systematic but only as good as the model of the system they're built on — equivalence partitioning assumes you've correctly identified the partitions, decision tables assume you've correctly identified every condition. Error guessing doesn't depend on having modeled the system correctly at all; it depends on developers, across countless different systems, tending to make the same handful of mistakes repeatedly. That's a surprisingly durable pattern, and it's why a tester with no domain knowledge of a brand-new system can still find real bugs on day one, just by trying the things that usually go wrong everywhere else.</p>
+
+  <div class="callout">
+    Error guessing pairs naturally with <a href="exploratory-testing.html">exploratory testing</a> — it's often the actual source of the hypotheses an exploratory session is built around. "What happens if I submit this twice" isn't a scripted test case; it's error guessing, applied live, in the middle of exploring.
+  </div>
+
+  <h2>Building the instinct deliberately</h2>
+  <p>The list above isn't exhaustive, and it grows the longer you test — every unusual bug you personally find becomes a pattern worth checking for on the next system, whether or not it's ever written down as a scripted test case. Keeping even an informal running list of "things that have burned me before" turns error guessing from vague intuition into an actual growing checklist, which is really all the technique is underneath the name.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
