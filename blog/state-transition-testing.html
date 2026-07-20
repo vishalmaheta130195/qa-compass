@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>State Transition Testing: When "It Depends on What Happened Before" Is the Whole Feature — QA Compass</title>
+<meta name="description" content="How to test systems whose behavior depends on state history, and why the invalid transitions matter more than the valid ones." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">15 August 2026 · Testing practice</div>
+  <h1>State Transition Testing: When "It Depends on What Happened Before" Is the Whole Feature</h1>
+
+  <p>Most test design techniques treat a single input in isolation. Some systems don't work that way at all — the same input produces a different result depending entirely on what state the system is already in. An account lockout after failed login attempts, an order that can be cancelled before shipping but not after, a bug tracker status that only accepts certain next steps — none of these can be tested one input at a time, because the correct behavior is defined by history, not just the current action.</p>
+
+  <h2>States, transitions, and the events that cause them</h2>
+  <p>The model has three parts: the states a system can be in, the events or inputs that cause a move from one state to another, and the transitions themselves — which moves are actually valid. I've already written about a state machine on this blog without naming it as one: the <a href="bug-life-cycle.html">bug life cycle</a> is exactly this — New, Assigned, Open, Fixed, Retest, Verified, Closed, Reopened are the states, and the actions that move a bug between them (assign, fix, retest, reopen) are the transitions.</p>
+
+  <h2>Testing the valid transitions first</h2>
+  <p>Start with the paths the system is explicitly designed to support — a bug moving New → Assigned → Open → Fixed → Retest → Closed is one valid path through the bug life cycle, and it should work smoothly end to end. Every explicitly defined transition deserves at least one test confirming it actually behaves as intended, since these are the paths a user or process will hit constantly.</p>
+
+  <h2>Testing the invalid transitions is where the real value is</h2>
+  <p>The more valuable question is what happens when someone attempts a transition that shouldn't be allowed — can a bug jump straight from New to Closed, skipping verification entirely? Can an order be cancelled after it's already shipped? Can a locked account still somehow log in through a different flow that forgot to check the lock state? These invalid transitions are exactly where systems tend to have real, exploitable, or simply confusing gaps, because developers naturally focus on making the intended path work and forget to explicitly block the paths that shouldn't exist.</p>
+
+  <div class="callout">
+    A practical way to generate test cases from a state model: for every state, list every possible event, and mark whether it should be allowed or blocked from that specific state. Anything the diagram doesn't explicitly address is worth asking about directly — an unhandled transition doesn't mean it's impossible, it usually means nobody decided what should happen there, and the system will do something anyway.
+  </div>
+
+  <h2>Where this technique actually applies</h2>
+  <p>Any feature with a meaningful "current state" that affects what's allowed next is a candidate: workflows, order statuses, subscription states, wizard-style multi-step flows, session and authentication states. If a feature's behavior can be fully described without ever referencing "what state is it in," this technique probably isn't needed. If the same action means something different depending on history, state transition testing is exactly the tool for finding the gaps a simpler test design approach would miss entirely.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
