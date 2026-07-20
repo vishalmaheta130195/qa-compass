@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Website vs. Web App vs. Mobile App: Why Your Test Approach Should Change — QA Compass</title>
+<meta name="description" content="The practical testing differences between a website, a web app, and a mobile app — and why the same checklist doesn't work for all three." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">26 July 2026 · Testing practice</div>
+  <h1>Website vs. Web App vs. Mobile App: Why Your Test Approach Should Change</h1>
+
+  <p>These three get tested with the same generic checklist more often than they should. Each one fails in different ways, for different reasons, and a test plan built for one leaves obvious gaps on the other two. The distinction that actually matters for QA isn't the marketing definition — it's what each one depends on to work correctly, because that's exactly where each one tends to break.</p>
+
+  <h2>Websites: content and reach are the risk</h2>
+  <p>A website is largely informational — mostly static content, minimal interactive logic, no persistent user data driving behavior. The risk here isn't complex business logic; it's that the same page has to render correctly across a huge range of browsers, screen sizes, and connection speeds, for an audience you don't control. Testing priorities follow directly: cross-browser rendering, responsive layout at real breakpoints (not just resizing a desktop window), link integrity, page load performance, and basic accessibility. There's comparatively little state to break, but a lot of surface area to render correctly.</p>
+
+  <h2>Web apps: state and flow are the risk</h2>
+  <p>A web app adds real interactivity — accounts, sessions, data that changes based on what the user does, business logic running client-side and server-side. This is where testing shifts toward functional flows and state: does the UI correctly reflect what just happened on the server, does a session survive a refresh, does data stay consistent if two tabs are open at once, does an API failure get handled gracefully instead of leaving the UI in a broken half-updated state. Cross-browser testing still matters, but it's now secondary to verifying that state and logic behave correctly under realistic, sometimes messy, user behavior.</p>
+
+  <h2>Mobile apps: the environment is the risk</h2>
+  <p>A mobile app runs on a device you don't control, under conditions a website or web app never has to consider: intermittent connectivity, interruptions from calls or notifications, background/foreground transitions, limited battery and memory, and OS-level permission prompts. Functional correctness matters just as much as it does for a web app, but it's tested alongside an entirely different risk category — does the app recover cleanly if it's backgrounded mid-transaction, does it handle a dropped network gracefully instead of hanging, does it behave correctly across the specific OS versions and device sizes your users actually have, not just the newest flagship phone.</p>
+
+  <div class="callout">
+    The pattern across all three: test what the platform makes fragile. A website's fragility is rendering across environments you don't control. A web app's fragility is state and logic across a session. A mobile app's fragility is the device and OS environment itself. Using a website checklist on a mobile app — or a mobile checklist on a website — tests for the wrong kind of failure entirely.
+  </div>
+
+  <p>If you're inheriting a test plan for one of these and it reads like it was written for another, that mismatch is usually visible immediately: cross-browser matrices for an app with no meaningful browser variance, or a total absence of offline/interruption testing for something that's going to spend its life on someone's phone in a pocket with patchy signal. Matching the plan to what the platform actually makes risky is most of the work.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
