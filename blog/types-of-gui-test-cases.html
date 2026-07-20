@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Types of GUI Test Cases, Beyond "Does It Look Right" — QA Compass</title>
+<meta name="description" content="A concrete breakdown of GUI test case types — rendering, layout, state, navigation, and accessibility — with the specific things each one checks." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">5 August 2026 · Testing practice</div>
+  <h1>Types of GUI Test Cases, Beyond "Does It Look Right"</h1>
+
+  <p>In an <a href="gui-testing.html">earlier post</a> I wrote about why GUI testing matters — the bugs that never throw an error. This one is the more concrete follow-up: the actual categories of test case I write when I sit down to test a screen, rather than just eyeballing it and calling it done.</p>
+
+  <h2>Rendering test cases</h2>
+  <p>Does every expected element actually appear — every button, label, icon, and image — with nothing missing and nothing duplicated? This sounds trivial until you test a screen with conditional elements (a badge that only shows for certain account types, an icon that depends on a data state) and confirm each condition actually renders what it should, not just the default case.</p>
+
+  <h2>Layout and alignment test cases</h2>
+  <p>Spacing, alignment, and overlap — tested specifically at more than one screen size and zoom level, since a layout that's correct at the exact resolution it was designed at very often isn't correct anywhere else. Long content is worth deliberately testing here too: a name field with an unusually long value, a label in a language that runs longer than English, to see whether the layout holds or breaks.</p>
+
+  <h2>Content and label test cases</h2>
+  <p>Correct text, correct capitalization, no placeholder copy left in by accident, and no truncation that cuts off meaning rather than just visually shortening. Worth checking dynamic content specifically — a label that's supposed to pluralize correctly, a date format that's supposed to match the rest of the product, a currency symbol that should match the user's actual locale.</p>
+
+  <h2>State-based test cases</h2>
+  <p>Every interactive element has more than one visual state — default, hover, focus, active, disabled — and each deserves its own check, not just the default appearance. A disabled button that's visually indistinguishable from an enabled one, or a focus state that's invisible for keyboard users, are both real GUI defects even though nothing is functionally "broken."</p>
+
+  <h2>Navigation and interaction test cases</h2>
+  <p>Does every button, link, and menu item actually go where its label implies, and does the correct element receive focus after an action completes — after a modal closes, does focus return somewhere sensible, or get lost entirely? This category catches the mismatch between "the click handler technically fired" and "the interaction actually made sense to a person using it."</p>
+
+  <h2>Cross-browser and cross-device test cases</h2>
+  <p>The same screen, deliberately checked across the real combination of browsers and devices your users have — not assumed identical because the code is the same. Rendering engines differ enough that a layout, a font, or a form control can look and behave differently across browsers even with zero browser-specific code written.</p>
+
+  <h2>Accessibility-oriented test cases</h2>
+  <p>Can every interactive element be reached and activated using only a keyboard? Is there enough color contrast to read text comfortably? Does an image or icon have a text alternative for a screen reader? These are frequently treated as a separate, optional category, but they're GUI test cases in the same sense as any other — checking whether the interface actually works for the person using it.</p>
+
+  <div class="callout">
+    A useful way to structure a GUI test pass: go through these categories one at a time across the whole screen, rather than testing element-by-element and hoping each category gets covered along the way. It's slower per screen, but it's the difference between "I looked at it and it seemed fine" and having actually checked each dimension deliberately.
+  </div>
+
+  <p>None of these categories require special tooling to start — most of them just require slowing down enough to check a dimension that's easy to skip when you're focused on whether the feature works at all. That's usually the real gap: not a lack of technique, but a lack of a checklist that reminds you to look.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
