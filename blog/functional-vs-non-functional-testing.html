@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Functional vs. Non-Functional Testing: The Split Everything Else Builds On — QA Compass</title>
+<meta name="description" content="The core distinction between functional and non-functional testing, and why a product needs both to actually be usable." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">6 August 2026 · Testing practice</div>
+  <h1>Functional vs. Non-Functional Testing: The Split Everything Else Builds On</h1>
+
+  <p>Almost every other category on this blog — <a href="levels-of-testing.html">levels of testing</a>, <a href="types-of-non-functional-testing.html">non-functional types</a>, <a href="gui-testing.html">GUI testing</a> — sits on one side or the other of a single, more basic split: does the feature do the right thing, and does it do that thing well. It's worth stating plainly, because a huge amount of test-planning confusion comes from treating these as one combined question instead of two separate ones.</p>
+
+  <h2>Functional testing: does it do the right thing</h2>
+  <p>Functional testing checks behavior against a defined expectation — given this input, under this condition, is the output correct. Login either authenticates a valid user or it doesn't. A calculation either produces the right number or it doesn't. This is inherently a pass/fail question tied to a specific, correct answer, and it's what most test cases in a typical suite are actually checking.</p>
+
+  <h2>Non-functional testing: does it do it well</h2>
+  <p>Non-functional testing checks qualities that sit alongside correctness rather than replacing it — how fast, how secure, how usable, how stable over time, how consistent across environments. A login that correctly authenticates every time but takes eight seconds to respond is functionally perfect and still a real problem; non-functional testing is the layer that catches that.</p>
+
+  <h2>Why the distinction actually matters in practice</h2>
+  <p>Teams that only track functional pass rates can ship something that's technically correct on every test case and still frustrating or unreliable in practice — slow under real load, confusing to navigate, inconsistent across browsers. None of that shows up as a failed functional test, because functional tests were never designed to measure it. A test plan needs both categories represented deliberately, because neither one will catch what the other is responsible for.</p>
+
+  <div class="callout">
+    A quick way to sort any test idea into one or the other: if the question has one objectively correct answer ("does clicking submit save the record"), it's functional. If the question is about degree or quality rather than a single right answer ("is this fast enough," "is this clear enough"), it's non-functional. Most test-planning confusion clears up once a scenario gets sorted into the right bucket.
+  </div>
+
+  <p>Neither category is more important than the other — a fast, secure, beautifully consistent product that does the wrong thing is just as much a failure as a functionally correct one that's unbearably slow. The value of keeping the split explicit isn't philosophical; it's that a test plan built around only one of them will always have a predictable, entire category of blind spot.</p>
+
+  <p>For the fuller breakdown of each side, <a href="levels-of-testing.html">levels of testing</a> covers how functional coverage is typically structured, and <a href="types-of-non-functional-testing.html">non-functional testing</a> goes through the specific qualities — performance, security, usability, and more — worth testing deliberately rather than hoping they show up on their own.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
