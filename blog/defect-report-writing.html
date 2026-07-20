@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Writing a Defect Report Someone Can Actually Act On — QA Compass</title>
+<meta name="description" content="The anatomy of a good defect report, and why most reopened bugs trace back to something the original report failed to capture." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">9 August 2026 · Testing practice</div>
+  <h1>Writing a Defect Report Someone Can Actually Act On</h1>
+
+  <p>I touched on this in the <a href="bug-life-cycle.html">bug life cycle</a> post: a bug that gets marked Fixed and then immediately Reopened is usually a report problem, not a dev problem. A defect report's entire job is letting someone with zero context reproduce the issue and understand its impact without needing to ask you anything. Most reports that cause friction later are missing one specific thing, not everything.</p>
+
+  <h2>Title: specific enough to be found later</h2>
+  <p>"Login broken" tells a developer nothing and will be impossible to find again in a list of forty other bugs three weeks from now. "Login fails with 'Invalid credentials' error when password contains a trailing space" is searchable, specific, and already hints at where to look. A good title states the condition and the actual symptom, not just the general area.</p>
+
+  <h2>Steps to reproduce: precise, numbered, complete</h2>
+  <p>Every step needed to get from a known starting point to the failure, numbered, with nothing assumed. "Log in and try to checkout" skips exactly the details that matter — which account, what's in the cart, what payment method. If reproducing the bug depends on a specific data state, state it explicitly rather than assuming the reader will guess it. The test for a good steps section: could someone who has never seen this feature follow it exactly and land on the same failure.</p>
+
+  <h2>Expected vs. actual: stated separately, not implied</h2>
+  <p>Say plainly what should have happened and what actually happened, as two distinct statements. "It doesn't work" conflates the two and leaves the reader guessing what "working" was even supposed to look like. Being explicit here also surfaces disagreements early — if a developer's idea of "expected" differs from yours, that's a conversation worth having at report time, not after a fix that solves the wrong problem.</p>
+
+  <h2>Environment: the detail that explains "works on my machine"</h2>
+  <p>Browser and version, OS, device, app version, account type — whatever's relevant to reproduce reliably. A huge share of "I can't reproduce this" responses trace back to an environment difference that simply wasn't recorded: a browser version, a user role, a feature flag state that wasn't mentioned because it seemed obvious to the reporter at the time.</p>
+
+  <h2>Severity and priority: your assessment, stated explicitly</h2>
+  <p>As covered in <a href="priority-vs-severity.html">priority vs. severity</a>, these are two separate judgments, and a report should state both rather than leaving them to be inferred from tone. Explaining briefly why you assessed it that way — "crashes the app for all users" vs. "cosmetic issue on a rarely visited settings page" — helps whoever triages it agree or push back with actual reasoning instead of a gut reaction.</p>
+
+  <h2>Evidence: show, don't just describe</h2>
+  <p>A screenshot, a screen recording, or relevant log output turns an ambiguous description into something objectively verifiable. This matters most for anything visual or timing-related, where a written description alone tends to leave room for two people to picture the problem completely differently.</p>
+
+  <div class="callout">
+    A fast self-check before submitting any report: read it back as if you know nothing about the feature. If any step assumes context the reader might not have, or if "expected" and "actual" aren't both stated outright, that gap is exactly what turns a five-minute fix into a week of back-and-forth clarification.
+  </div>
+
+  <p>None of this is about writing longer reports — a precise two-line report often beats a rambling ten-line one. It's about making sure the reader never has to guess, ask, or assume anything to understand exactly what's wrong and exactly how to see it themselves.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
