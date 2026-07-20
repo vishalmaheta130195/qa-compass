@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Decision Table Testing: Covering Every Combination of Conditions on Purpose — QA Compass</title>
+<meta name="description" content="How decision tables turn tangled if/and/or business rules into a complete, systematic set of test cases instead of a guess at coverage." />
+<link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="../index.html" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9.5"></circle>
+        <polygon points="14.5 9.5 12 14.5 9.5 9.5 12 9.5"></polygon>
+        <circle cx="12" cy="12" r="1"></circle>
+      </svg>
+      <span class="brand-name">QA Compass</span>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../extensions.html">Extensions</a>
+      <a href="index.html" class="active">Blog</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+<article class="post-body">
+  <div class="post-meta">13 August 2026 · Testing practice</div>
+  <h1>Decision Table Testing: Covering Every Combination of Conditions on Purpose</h1>
+
+  <p><a href="equivalence-partitioning-and-boundary-value-analysis.html">Equivalence partitioning and boundary value analysis</a> work well for a single input at a time. Business rules rarely stay that simple — a discount that depends on membership tier and order total and whether a promo code is active, all at once, produces a rule with more combinations than anyone reliably tracks in their head. A decision table exists to make every one of those combinations visible and testable, rather than trusting memory to catch them all.</p>
+
+  <h2>The structure: conditions in, actions out</h2>
+  <p>A decision table lists every relevant condition down one side, every possible combination of true/false values for those conditions across columns, and the resulting action or outcome for each combination. Take a simple discount rule: is the customer a member (yes/no), and is the order over $100 (yes/no). Two conditions, each with two states, produce four combinations — member and over $100, member and under $100, non-member and over $100, non-member and under $100 — and each one gets an explicit, stated expected outcome.</p>
+
+  <h2>Why this catches what ad-hoc testing misses</h2>
+  <p>Without a table, it's easy to test the two obvious cases — a member getting a discount, a non-member not getting one — and quietly skip the combination where a non-member happens to qualify through order size alone, simply because nobody thought to combine those two conditions on purpose. The table forces every combination onto the page whether or not it seems interesting, which is exactly how it catches the rule nobody explicitly considered.</p>
+
+  <h2>When it's worth the setup</h2>
+  <p>Decision tables earn their overhead once you're past two or three simple conditions — below that, the combinations are usually small enough to track without a formal table. Past that point, they're worth building specifically because the number of combinations grows fast: three yes/no conditions is eight combinations, four is sixteen, and past a certain size, some combinations are usually impossible or irrelevant and can be explicitly marked as such rather than silently dropped.</p>
+
+  <div class="callout">
+    Building the table often surfaces a requirements gap before a single test case gets written — a combination the business rule genuinely never addressed. That's a real finding, not a distraction from testing: better to catch an undefined combination while building the table than to have the system silently pick some default behavior for it in production.
+  </div>
+
+  <p>The table itself becomes useful documentation beyond the immediate testing pass — it's a compact, complete statement of the actual business rule, in a form that's far easier to review with a product owner than a page of prose describing the same logic. If a rule ever changes, updating the table and regenerating the affected test cases is usually faster than re-deriving the combinations from scratch.</p>
+
+  <a class="back-link" href="index.html">&larr; Back to all posts</a>
+</article>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    QA Compass — built and maintained by Vishal Maheta.
+  </div>
+</footer>
+
+</body>
+</html>
